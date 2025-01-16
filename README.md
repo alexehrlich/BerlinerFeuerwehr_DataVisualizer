@@ -1,6 +1,6 @@
 # Berlin Feuerwehr Regional Mission Visualization
 
-This project automatically downloads all available regional mission data and process and groups districts to then
+This project automatically downloads all available regional mission data and groups districts to then
 plot a graphical representation of the mission frequency per year in proprtional circles on the berlin map.
 The map is a public available shapefile of Berlin. The location data is retreived by OpenStreetMAp.org via geopy. 
 
