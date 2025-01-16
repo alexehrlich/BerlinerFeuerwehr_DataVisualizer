@@ -9,7 +9,7 @@ next executions won't need to fetch the data and will be much faster.
 
 
 ## Demo
-![](https://github.com/alexehrlich/BerlinerFeuerwehr_DataVisualizer/tree/main/img/demo.gif)
+<--![](https://github.com/alexehrlich/BerlinerFeuerwehr_DataVisualizer/tree/main/img/demo.gif)-->
 
 ## Requirements
 - Python 3.6 or higher
