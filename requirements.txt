@@ -4,3 +4,4 @@ matplotlib
 geopandas
 geopy
 shapely
+PyQt5

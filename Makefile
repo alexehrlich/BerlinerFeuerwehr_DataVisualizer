@@ -13,7 +13,7 @@ fetch_data:
 	@rm -f merged_mission_count_years.csv
 	@$(MAKE) run
 
-fclean: fetch_data
+fclean:
 	@rm -rf ./venv
 	@rm -f merged_mission_count_years.csv
 	

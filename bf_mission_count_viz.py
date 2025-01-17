@@ -1,6 +1,8 @@
 import pandas as pd
 import requests
 import os
+import matplotlib
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import geopandas as gpd
 from matplotlib.patches import Ellipse
