@@ -1,13 +1,9 @@
 # Berlin Feuerwehr Regional Mission Visualization
 
-This project automatically downloads all available regional mission data and groups districts to then
-plot a graphical representation of the mission frequency per year in proprtional circles on the berlin map.
-The map is a public available shapefile of Berlin. The location data is retreived by OpenStreetMAp.org via geopy. 
+This project automatically groups districts to then plot a graphical representation of the mission frequency per year in proprtional circles on the berlin map. The data in the repository is from January-17-2025. Its included to make a fast execution possible.
+To fetch the newest data run `make fetch_data. This automatically graps all available regional data. This may take a while. This data is then stored in merged_mission_count.csv so the next execution takes this data again.
 
-On the first execution the geo data for every district is fetched which takes a while. The data is then stored. The
-next executions won't need to fetch the data and will be much faster.
-
-DISCLAIMER: The fetched Geo data might not fit the actual location from the data. A few locations like Parkviertel are not found.
+***DISCLAIMER: The fetched Geo data might not fit the actual location from the data. A few locations like Parkviertel are not found.***
 
 
 ## Demo
