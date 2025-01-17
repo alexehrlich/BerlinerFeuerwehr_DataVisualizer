@@ -7,12 +7,15 @@ The map is a public available shapefile of Berlin. The location data is retreive
 On the first execution the geo data for every district is fetched which takes a while. The data is then stored. The
 next executions won't need to fetch the data and will be much faster.
 
+DISCLAIMER: The fetched Geo data might not fit the actual location from the data. A few locations like Parkviertel are not found.
+
 
 ## Demo
 ![Demo](img/demo.gif)
 
 ## Requirements
 - Python 3.6 or higher
+- MAKE, to install the dependencies automatically
 - dependecies which get installed in the venv in the section below
 
 
