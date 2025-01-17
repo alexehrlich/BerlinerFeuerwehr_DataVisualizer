@@ -21,6 +21,8 @@ To fetch the newest data run `make fetch_data`. This automatically graps all ava
 - `cd`to that folder
 - `make setup`to automatically create virtual environment and install dependecies
 - `make run`to run the code
+- Only `make` combines setup and run
+- `make fetch_data` grabs the newest regional data from Berliner Feuerwehr Open Data
 
 If you don't have make you can create the venv manually and install the dependencies from requirements.txt manually.
 
