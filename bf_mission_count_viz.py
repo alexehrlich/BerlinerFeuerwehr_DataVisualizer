@@ -78,9 +78,33 @@ def plot_circles(year, ax, df):
         if float(longitude) != float('nan'):
             circle_center = (longitude, latitude) 
             initial_radius_x = df.loc[index, str(year)] / 600000 
-            initial_radius_y = initial_radius_x / ax.get_aspect() 
-            ellipse = Ellipse(circle_center, width=initial_radius_x * 2, height=initial_radius_y * 2, color="red", alpha=0.5)
+            initial_radius_y = initial_radius_x / ax.get_aspect()
+            if str(year) == df.columns[1:-2].to_list()[-1]:
+                color = 'orange'
+            else:
+                color = 'red'
+            ellipse = Ellipse(circle_center, width=initial_radius_x * 2, height=initial_radius_y * 2, color=color, alpha=0.5)
             ax.add_patch(ellipse)
+    
+def plot_districts(ax):
+    berlin_districts_coordinates = {
+    "Mitte": {"latitude": 52.5200, "longitude": 13.35050},
+    "Friedrichshain-\nKreuzberg": {"latitude": 52.5020, "longitude": 13.4250},
+    "Pankow": {"latitude": 52.6, "longitude": 13.42},
+    "Charlottenburg-\nWilmersdorf": {"latitude": 52.5030, "longitude": 13.22},
+    "Spandau": {"latitude": 52.5373, "longitude": 13.1975},
+    "Steglitz-Zehlendorf": {"latitude": 52.44, "longitude": 13.2},
+    "Tempelhof-\nSchöneberg": {"latitude": 52.4670, "longitude": 13.3546},
+    "Neukölln": {"latitude": 52.4722, "longitude": 13.4258},
+    "Treptow-Köpenick": {"latitude": 52.4444, "longitude": 13.5725},
+    "Marzahn-\nHellersdorf": {"latitude": 52.53, "longitude": 13.5492},
+    "Lichten-\nberg": {"latitude": 52.5156, "longitude": 13.48},
+    "Reinickendorf": {"latitude": 52.6, "longitude": 13.25},
+    }
+    for key, cord in berlin_districts_coordinates.items():
+        ax.text(cord['longitude'], cord['latitude'], 
+            key, fontsize=5, color='white', alpha=0.5)
+
 
 
 
@@ -151,10 +175,12 @@ def main():
     gdf = gpd.read_file('./bezirksgrenzen/bezirksgrenzen.shp')
     gdf.plot(ax=ax[0], color='black')
 
-    #Plot the bar chart for missions per year
+    #Plot the bar chart for missions per year, make the current year orange
+    colors = ['lightblue' for year in df.columns.tolist()[:-2]]
+    colors[-1] = 'orange'
     ax[1].grid(axis='y')
     ax[1].set_axisbelow(True)
-    ax[1].bar(df.columns.tolist()[:-2], [df[year].sum() / 100000 for year in df.columns.tolist()[:-2]])
+    ax[1].bar(df.columns.tolist()[:-2], [df[year].sum() / 100000 for year in df.columns.tolist()[:-2]], color=colors)
     ax[1].set_title('Missions Berlin total in 100 Tsd.')
 
 
@@ -167,6 +193,8 @@ def main():
         plot_circles(val, ax[0], df)
         fig.canvas.draw_idle()
     slider.on_changed(update)
+
+    plot_districts(ax[0])
 
     plot_circles(2018, ax[0], df)
     plt.show()
