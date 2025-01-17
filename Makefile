@@ -9,9 +9,11 @@ run:
 	@source ./venv/bin/activate && \
 	python3 bf_mission_count_viz.py
 
-fetch_data: run
-	@rm merged_mission_count_years.csv
+fetch_data:
+	@rm -f merged_mission_count_years.csv
+	@$(MAKE) run
 
-fclean: update_data
+fclean: fetch_data
 	@rm -rf ./venv
+	@rm -f merged_mission_count_years.csv
 	
